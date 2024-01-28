@@ -1,21 +1,26 @@
 const path = require("path");
 
+const ejs = require("ejs");
+
 const index = (req, res, next) => {
-  console.log("index");
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+  res.render("index", { title: "Home" });
 };
 
 const contact = (req, res, next) => {
-  console.log("contact");
-  res.sendFile(path.join(__dirname, "../public/contact.html"));
+  res.render("contact", { title: "Contact" });
 };
 
 const about = (req, res, next) => {
-  res.sendFile(path.join(__dirname, "../public/about.html"));
+  res.render("about", { title: "About" });
+};
+
+const post = (req, res, next) => {
+  res.render("post", { title: "Post" });
 };
 
 module.exports = {
   index,
   contact,
   about,
+  post,
 };

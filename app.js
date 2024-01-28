@@ -4,6 +4,9 @@ require("dotenv").config();
 const cors = require("cors");
 const { strict } = require("assert");
 const { router } = require("./routes/index");
+
+const ejs = require("ejs");
+
 class App {
   constructor() {
     this.app = express();
@@ -12,7 +15,7 @@ class App {
     this.app.use(express.static(path.join(__dirname, "public")));
     this.app.use(express.json({ strict: false }));
     this.app.use(express.urlencoded({ extended: true }));
-
+    this.app.set("view engine", "ejs");
     this.app.use(
       cors({
         origin: "*",
