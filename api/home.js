@@ -1,5 +1,21 @@
-const app = (req, res, next) => {
-  res.send("Hello World!");
+const path = require("path");
+
+const index = (req, res, next) => {
+  console.log("index");
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 };
 
-module.exports = app;
+const contact = (req, res, next) => {
+  console.log("contact");
+  res.sendFile(path.join(__dirname, "../public/contact.html"));
+};
+
+const about = (req, res, next) => {
+  res.sendFile(path.join(__dirname, "../public/about.html"));
+};
+
+module.exports = {
+  index,
+  contact,
+  about,
+};

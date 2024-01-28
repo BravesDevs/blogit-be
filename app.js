@@ -23,15 +23,13 @@ class App {
     this.initializeRoutes();
   }
 
+  initializeRoutes() {
+    this.app.use("/", router);
+  }
+
   listen() {
     this.app.listen(this.port, () => {
       console.log(`Server is running on port ${this.port}`);
-    });
-  }
-
-  initializeRoutes() {
-    this.app.use("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "public/contact.html"));
     });
   }
 }

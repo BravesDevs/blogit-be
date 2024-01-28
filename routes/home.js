@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const app = require("../api/home");
+const { index, contact, about } = require("../api/home");
 
-router.route("/").get(app);
+router.route("/").get(index);
+router.route("/contact").get(contact);
+router.route("/about").get(about);
 
 module.exports = {
   router,
