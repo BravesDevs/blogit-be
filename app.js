@@ -10,7 +10,7 @@ const ejs = require("ejs");
 class App {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT;
+    this.port = process.env.PORT || 3000;
 
     this.app.use(express.static(path.join(__dirname, "public")));
     this.app.use(express.json({ strict: false }));
