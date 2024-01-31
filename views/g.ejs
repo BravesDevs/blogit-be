@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('layouts/head.ejs') %>
+  <body>
+    <%- include('layouts/navbar.ejs') %>
+    <header class="masthead" style="background-color: gray">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="page-heading">
+              <h1>License G</h1>
+              <span class="subheading">All about License G.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <article class="mb-4">
+      <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="row mb-3">
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="licenseNumber"
+                  placeholder="Enter License Number"
+                />
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+            <p>
+              In Canada, the G license typically refers to a full,
+              non-commercial driver's license that allows individuals to operate
+              most standard vehicles, including cars, vans, and small trucks.
+              The G license is an important milestone for drivers as it
+              signifies a level of competency and experience on the road.
+            </p>
+            <p>
+              In Ontario, for example, the G license is preceded by the G2
+              license, which is obtained after passing certain tests and
+              fulfilling requirements in the graduated licensing system. The G
+              license comes with fewer restrictions compared to the G2 stage,
+              allowing drivers more freedom and flexibility on the road.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <%- include('layouts/footer.ejs') %> <%- include('layouts/scripts.ejs') %>
+  </body>
+</html>
