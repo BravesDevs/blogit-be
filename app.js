@@ -3,8 +3,9 @@ const path = require("path");
 require("dotenv").config();
 const cors = require("cors");
 const { strict } = require("assert");
-const { router } = require("./routes/index");
 
+const { navigationRouter } = require("./routes/home");
+const { userRouter } = require("./routes/user");
 const ejs = require("ejs");
 
 class App {
@@ -22,18 +23,23 @@ class App {
         methods: ["GET", "POST", "PUT", "DELETE"],
       })
     );
-
+    this.initializeDatabase();
     this.initializeRoutes();
   }
 
   initializeRoutes() {
-    this.app.use("/", router);
+    this.app.use("/", navigationRouter);
+    this.app.use("/user", userRouter);
   }
 
   listen() {
     this.app.listen(this.port, () => {
       console.log(`Server is running on port ${this.port}`);
     });
+  }
+
+  initializeDatabase() {
+    require("./db/config");
   }
 }
 
