@@ -1,5 +1,4 @@
-import { g2RegisterService } from "../services/g2";
-
+const { g2RegisterService } = require("../services/g2");
 const g2RegisterAPI = async (req, res, next) => {
   const { body } = req;
 

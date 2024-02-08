@@ -1,4 +1,4 @@
-import { g2RegisterAPI } from "../api/g2";
+const { g2RegisterAPI } = require("../api/g2");
 
 const express = require("express");
 const router = express.Router();

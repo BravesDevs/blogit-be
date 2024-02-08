@@ -6,7 +6,7 @@ const { strict } = require("assert");
 
 const { navigationRouter } = require("./routes/home");
 const { userRouter } = require("./routes/user");
-import { g2Router } from "./routes/g2";
+const { g2Router } = require("./routes/g2");
 const ejs = require("ejs");
 
 class App {

@@ -1,4 +1,4 @@
-import { G2 } from "../services/g2";
+const { G2 } = require("../db/models/G2");
 
 const g2RegisterService = async (data) => {
   const g2 = new G2(data);
