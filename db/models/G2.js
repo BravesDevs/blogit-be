@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const G2Schema = new Schema({
+const g2Schema = new Schema({
   firstName: String,
   lastName: String,
   licenseNo: String,
@@ -14,6 +14,6 @@ const G2Schema = new Schema({
   },
 });
 
-const g2Model = mongoose.model("g2", G2Schema);
+const G2 = mongoose.model("G2", g2Schema);
 
-module.exports = { g2Model };
+module.exports = { G2 };
