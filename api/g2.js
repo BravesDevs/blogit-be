@@ -1,7 +1,7 @@
 const { g2RegisterService } = require("../services/g2");
 const g2RegisterAPI = async (req, res, next) => {
   const { body } = req;
-
+  console.log(body);
   try {
     const { firstName, lastName, licenseNo, age, make, model, year, platNo } =
       body;
@@ -16,7 +16,7 @@ const g2RegisterAPI = async (req, res, next) => {
       !year ||
       !platNo
     ) {
-      res.status(400).json({ message: "All fields are required" });
+      res.render("error", { title: "Error" });
     }
 
     const data = {
@@ -27,7 +27,8 @@ const g2RegisterAPI = async (req, res, next) => {
     };
 
     const { g2 } = await g2RegisterService(data);
-    res.status(201).json(g2);
+    res.render("g2RegisterSuccess", { title: "Success" });
+    g2RegisterSuccess;
   } catch (error) {
     next(error);
   }
