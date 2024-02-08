@@ -1,23 +1,23 @@
-// const { User } = require("../db/models/G2");
+const { User } = require("../db/models/G2");
 
-// const loginService = async (email, password) => {
-//   const user = await User.findOne({ email });
+const loginService = async (email, password) => {
+  const user = await User.findOne({ email });
 
-//   if (!user) {
-//     return {
-//       error: "User not found",
-//     };
-//   }
+  if (!user) {
+    return {
+      error: "User not found",
+    };
+  }
 
-//   if (user.password !== password) {
-//     return {
-//       error: "Password is incorrect",
-//     };
-//   }
+  if (user.password !== password) {
+    return {
+      error: "Password is incorrect",
+    };
+  }
 
-//   return {
-//     user,
-//   };
-// };
+  return {
+    user,
+  };
+};
 
-// module.exports = { loginService };
+module.exports = { loginService };
