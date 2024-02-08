@@ -18,23 +18,28 @@
       <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
-            <!-- <h2>Login 🍁</h2> -->
             <div class="my-5">
-              <form id="loginForm" data-sb-form-api-token="API_TOKEN">
+              <form
+                id="loginForm"
+                method="POST"
+                action="/user/login"
+                data-sb-form-api-token="API_TOKEN"
+              >
                 <div class="form-floating">
                   <input
                     class="form-control"
-                    id="username"
+                    id="email"
+                    name="email"
                     type="text"
-                    placeholder="Enter your username..."
+                    placeholder="Enter your email..."
                     data-sb-validations="required"
                   />
-                  <label for="username">Username</label>
+                  <label for="email">Email</label>
                   <div
                     class="invalid-feedback"
                     data-sb-feedback="username:required"
                   >
-                    Username is required.
+                    Email is required.
                   </div>
                 </div>
                 <div class="form-floating">
@@ -42,6 +47,7 @@
                     class="form-control"
                     id="password"
                     type="password"
+                    name="password"
                     placeholder="Enter your password..."
                     data-sb-validations="required"
                   />
@@ -53,6 +59,9 @@
                     Password is required.
                   </div>
                 </div>
+                <br />
+                <!-- Add the span for displaying error message -->
+                <span id="errorMessage" class="text-danger"></span>
                 <br />
                 <p class="text-center">Page is under construction.</p>
                 <div class="text-center">
