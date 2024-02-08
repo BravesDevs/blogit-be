@@ -10,7 +10,7 @@ const loginApi = async (req, res) => {
   if (user.error) {
     return res.status(400).json({ error: user.error });
   }
-  res.status(200).json({ message: "ok", data: user.user });
+  res.redirect("/g2");
 };
 
 module.exports = { loginApi };
