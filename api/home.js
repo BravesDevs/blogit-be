@@ -18,9 +18,14 @@ const g = (req, res, next) => {
   res.render("g", { title: "G" });
 };
 
+const error = (req, res, next) => {
+  res.render("error", { title: "Error" });
+};
+
 module.exports = {
   index,
   login,
   g2,
   g,
+  error,
 };

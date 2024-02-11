@@ -6,6 +6,7 @@ const { strict } = require("assert");
 
 const { navigationRouter } = require("./routes/home");
 const { userRouter } = require("./routes/user");
+const { g2Router } = require("./routes/g2");
 const ejs = require("ejs");
 
 class App {
@@ -30,6 +31,7 @@ class App {
   initializeRoutes() {
     this.app.use("/", navigationRouter);
     this.app.use("/user", userRouter);
+    this.app.use("/g2", g2Router);
   }
 
   listen() {
