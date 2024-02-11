@@ -17,7 +17,7 @@ const g2RegisterAPI = async (req, res, next) => {
       !year ||
       !platNo
     ) {
-      res.redirect("/error");
+      res.redirect("/");
     }
 
     const data = {

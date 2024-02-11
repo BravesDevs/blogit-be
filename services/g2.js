@@ -8,4 +8,9 @@ const g2RegisterService = async (data) => {
   };
 };
 
-module.exports = { g2RegisterService };
+const fetchG2RegistrationsService = async () => {
+  const g2 = await G2.find();
+  return g2;
+};
+
+module.exports = { g2RegisterService, fetchG2RegistrationsService };

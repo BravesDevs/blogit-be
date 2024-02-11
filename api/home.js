@@ -1,9 +1,16 @@
 const path = require("path");
 
 const ejs = require("ejs");
+const { fetchG2RegistrationsService } = require("../services/g2");
 
-const index = (req, res, next) => {
-  res.render("index", { title: "Dashboard" });
+const index = async (req, res, next) => {
+  // Get the License Registrations of G2
+  try {
+    let g2Registrations = await fetchG2RegistrationsService();
+    res.render("index", { title: "Dashboard", g2Registrations });
+  } catch (err) {
+    res.render("error", { title: "Error" });
+  }
 };
 
 const login = (req, res, next) => {
