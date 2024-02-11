@@ -7,6 +7,7 @@ const { strict } = require("assert");
 const { navigationRouter } = require("./routes/home");
 const { userRouter } = require("./routes/user");
 const { g2Router } = require("./routes/g2");
+const { gRouter } = require("./routes/g");
 const ejs = require("ejs");
 
 class App {
@@ -14,7 +15,7 @@ class App {
     this.app = express();
     this.port = process.env.PORT || 3000;
 
-    this.app.use(express.static(path.join(__dirname, "public")));
+    this.app.use("/public", express.static(path.join(__dirname, "public")));
     this.app.use(express.json({ strict: false }));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.set("view engine", "ejs");
@@ -32,6 +33,7 @@ class App {
     this.app.use("/", navigationRouter);
     this.app.use("/user", userRouter);
     this.app.use("/g2", g2Router);
+    this.app.use("/g", gRouter);
   }
 
   listen() {

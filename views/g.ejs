@@ -15,41 +15,54 @@
         </div>
       </div>
     </header>
-    <article class="mb-4">
-      <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col-md-10 col-lg-8 col-xl-7">
-            <div class="row mb-3">
-              <div class="col">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="licenseNumber"
-                  placeholder="Enter License Number"
-                />
-              </div>
-              <div class="col-auto">
-                <button type="button" class="btn btn-primary">Submit</button>
-              </div>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form action="/g/fetch" method="POST" class="mb-4">
+            <div class="input-group">
+              <input
+                type="text"
+                name="licenseNo"
+                class="form-control"
+                placeholder="Enter License Number"
+                aria-label="Enter License Number"
+                aria-describedby="button-addon2"
+              />
+              &nbsp;
+              <button class="btn btn-primary" type="submit" id="button-addon2">
+                Fetch Data
+              </button>
             </div>
-            <p>
-              In Canada, the G license typically refers to a full,
-              non-commercial driver's license that allows individuals to operate
-              most standard vehicles, including cars, vans, and small trucks.
-              The G license is an important milestone for drivers as it
-              signifies a level of competency and experience on the road.
-            </p>
-            <p>
-              In Ontario, for example, the G license is preceded by the G2
-              license, which is obtained after passing certain tests and
-              fulfilling requirements in the graduated licensing system. The G
-              license comes with fewer restrictions compared to the G2 stage,
-              allowing drivers more freedom and flexibility on the road.
-            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Card for displaying G2 license details -->
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <% if(g2Details!=""){ %>
+              <h5 class="card-title">
+                <%= g2Details.firstName + " " + g2Details.lastName %>
+              </h5>
+              <p class="card-text">
+                Model: <%= g2Details.carDetails.make + " " +
+                g2Details.carDetails.model %>
+              </p>
+              <p class="card-text">Year: <%= g2Details.carDetails.year %></p>
+              <% } else{ %>
+              <h1>No Details Found</h1>
+              <% } %>
+            </div>
           </div>
         </div>
       </div>
-    </article>
+    </div>
+
+    <!-- End of card section -->
     <%- include('layouts/footer.ejs') %> <%- include('layouts/scripts.ejs') %>
   </body>
 </html>

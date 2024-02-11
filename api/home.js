@@ -22,7 +22,7 @@ const g2 = (req, res, next) => {
 };
 
 const g = (req, res, next) => {
-  res.render("g", { title: "G" });
+  res.render("g", { title: "G", g2Details: "" });
 };
 
 const error = (req, res, next) => {

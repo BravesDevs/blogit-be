@@ -13,4 +13,12 @@ const fetchG2RegistrationsService = async () => {
   return g2;
 };
 
-module.exports = { g2RegisterService, fetchG2RegistrationsService };
+const fetchG2LicenseDetials = async (licenseNo) => {
+  return await G2.findOne({ licenseNo });
+};
+
+module.exports = {
+  g2RegisterService,
+  fetchG2RegistrationsService,
+  fetchG2LicenseDetials,
+};
