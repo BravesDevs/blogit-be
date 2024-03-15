@@ -1,4 +1,4 @@
-const { loginService } = require("../services/user");
+const { loginService, registerService } = require("../services/user");
 
 const loginApi = async (req, res) => {
   const { email, password } = req.body;
@@ -13,4 +13,17 @@ const loginApi = async (req, res) => {
   res.redirect("/g2");
 };
 
-module.exports = { loginApi };
+const registerApi = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required" });
+  }
+
+  const user = await registerService(email, password);
+  if (user.error) {
+    return res.status(400).json({ error: user.error });
+  }
+  res.redirect("/login");
+};
+
+module.exports = { loginApi, registerApi };

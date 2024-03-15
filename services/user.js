@@ -20,4 +20,25 @@ const loginService = async (email, password) => {
   };
 };
 
-module.exports = { loginService };
+const registerService = async (email, password) => {
+  const user = await User.findOne({
+    email,
+  });
+
+  if (user) {
+    return {
+      error: "User already exists",
+    };
+  }
+
+  await User.create({
+    email,
+    password,
+  });
+
+  return {
+    user,
+  };
+};
+
+module.exports = { loginService, registerService };
