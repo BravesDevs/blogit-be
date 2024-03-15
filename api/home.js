@@ -17,6 +17,10 @@ const login = (req, res, next) => {
   res.render("login", { title: "Login" });
 };
 
+const register = (req, res, next) => {
+  res.render("signup", { title: "Register" });
+};
+
 const g2 = (req, res, next) => {
   res.render("g2", { title: "G2" });
 };
@@ -35,4 +39,5 @@ module.exports = {
   g2,
   g,
   error,
+  register,
 };

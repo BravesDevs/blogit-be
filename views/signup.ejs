@@ -8,7 +8,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="page-heading">
-              <h1>Sign In 🍁</h1>
+              <h1>Register 🍁</h1>
             </div>
           </div>
         </div>
@@ -20,26 +20,26 @@
           <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="my-5">
               <form
-                id="loginForm"
+                id="registerForm"
                 method="POST"
-                action="/user/login"
+                action="/user/register"
                 data-sb-form-api-token="API_TOKEN"
               >
                 <div class="form-floating">
                   <input
                     class="form-control"
-                    id="email"
-                    name="email"
+                    id="username"
+                    name="username"
                     type="text"
-                    placeholder="Enter your email..."
+                    placeholder="Enter your username..."
                     data-sb-validations="required"
                   />
-                  <label for="email">Email</label>
+                  <label for="username">Username</label>
                   <div
                     class="invalid-feedback"
                     data-sb-feedback="username:required"
                   >
-                    Email is required.
+                    Username is required.
                   </div>
                 </div>
                 <div class="form-floating">
@@ -59,25 +59,33 @@
                     Password is required.
                   </div>
                 </div>
+                <div class="form-floating">
+                  <input
+                    class="form-control"
+                    id="repeatPassword"
+                    type="password"
+                    name="repeatPassword"
+                    placeholder="Repeat your password..."
+                    data-sb-validations="required"
+                  />
+                  <label for="repeatPassword">Repeat Password</label>
+                  <div
+                    class="invalid-feedback"
+                    data-sb-feedback="repeatPassword:required"
+                  >
+                    Repeating the password is required.
+                  </div>
+                </div>
                 <br />
                 <span id="errorMessage" class="text-danger"></span>
                 <br />
-                <p class="text-center">Page is under construction.</p>
                 <div class="text-center">
                   <button
                     class="btn btn-primary text-uppercase"
-                    id="loginButton"
+                    id="registerButton"
                     type="submit"
                   >
-                    Login
-                  </button>
-                  <button
-                    class="btn btn-secondary text-uppercase"
-                    id="signupButton"
-                    type="button"
-                    onclick="window.location.href='/register'"
-                  >
-                    Sign Up
+                    Register
                   </button>
                 </div>
               </form>
