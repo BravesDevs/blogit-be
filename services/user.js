@@ -1,6 +1,8 @@
 const { User } = require("../db/models/User");
 const { hashData } = require("../common/helpers/helpers");
 
+const jwt = require("jsonwebtoken");
+
 const loginService = async (email, password) => {
   const user = await User.findOne({ email });
 
@@ -18,6 +20,9 @@ const loginService = async (email, password) => {
 
   return {
     ok: true,
+    token: jwt.sign({ email }, "secretKey", {
+      expiresIn: "1h",
+    }),
     message: "User Login Successful",
   };
 };

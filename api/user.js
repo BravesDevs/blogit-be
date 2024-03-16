@@ -10,6 +10,11 @@ const loginApi = async (req, res) => {
   if (user.error) {
     return res.status(400).json({ error: user.error });
   }
+  // Set the token in the cookie and render the G2 Page
+  res.cookie("token", user.token, {
+    maxAge: 60 * 60 * 1000,
+    httpOnly: true,
+  });
   res.redirect("/g2");
 };
 
