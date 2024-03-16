@@ -2,7 +2,8 @@
 <html lang="en">
   <%- include('layouts/head.ejs') %>
   <body>
-    <%- include('layouts/navbar.ejs') %>
+    <%- isLoggedIn ? include('layouts/authnavbar.ejs') :
+    include('layouts/navbar.ejs') %>
     <header class="masthead" style="background-color: gray">
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">

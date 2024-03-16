@@ -15,7 +15,7 @@ const loginApi = async (req, res) => {
     maxAge: 60 * 60 * 1000,
     httpOnly: true,
   });
-  res.redirect("/g2");
+  res.render("g2", { title: "Welcome", isLoggedIn: true });
 };
 
 const registerApi = async (req, res) => {
