@@ -1,4 +1,5 @@
-const { User } = require("../db/models/G2");
+const { User } = require("../db/models/User");
+const { hashData } = require("../common/helpers/helpers");
 
 const loginService = async (email, password) => {
   const user = await User.findOne({ email });
@@ -16,14 +17,13 @@ const loginService = async (email, password) => {
   }
 
   return {
-    user,
+    ok: true,
+    message: "User Login Successful",
   };
 };
 
 const registerService = async (email, password) => {
-  const user = await User.findOne({
-    email,
-  });
+  const user = await User.findOne({ email });
 
   if (user) {
     return {
@@ -33,7 +33,7 @@ const registerService = async (email, password) => {
 
   await User.create({
     email,
-    password,
+    password: await hashData(password),
   });
 
   return {
