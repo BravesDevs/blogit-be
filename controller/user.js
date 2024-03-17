@@ -19,7 +19,7 @@ const loginApi = async (req, res) => {
 };
 
 const registerApi = async (req, res) => {
-  const { email, password, repeatPassword } = req.body;
+  const { email, password, repeatPassword, userType } = req.body;
   if (!email || !password || !repeatPassword) {
     return res.status(400).json({ error: "Email and password are required" });
   }
@@ -28,7 +28,7 @@ const registerApi = async (req, res) => {
     return res.status(400).json({ error: "Passwords do not match" });
   }
 
-  const user = await registerService(email, password);
+  const user = await registerService(email, password, userType);
   if (user.error) {
     return res.status(400).json({ error: user.error });
   }

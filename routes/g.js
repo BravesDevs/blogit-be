@@ -1,4 +1,4 @@
-const { getLicenseDetailsAPI } = require("../api/g");
+const { getLicenseDetailsAPI } = require("../controller/g");
 
 const express = require("express");
 const router = express.Router();

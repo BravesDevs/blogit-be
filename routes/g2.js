@@ -1,4 +1,4 @@
-const { g2RegisterAPI, redirectGAPI } = require("../api/g2");
+const { g2RegisterAPI, redirectGAPI } = require("../controller/g2");
 
 const express = require("express");
 const router = express.Router();

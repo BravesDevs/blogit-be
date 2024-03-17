@@ -27,7 +27,7 @@ const loginService = async (email, password) => {
   };
 };
 
-const registerService = async (email, password) => {
+const registerService = async (email, password, userType) => {
   const user = await User.findOne({ email });
 
   if (user) {
@@ -39,6 +39,7 @@ const registerService = async (email, password) => {
   await User.create({
     email,
     password: await hashData(password),
+    userType: userType,
   });
 
   return {

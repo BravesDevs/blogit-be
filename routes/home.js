@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { index, login, g2, g, error, register } = require("../api/home");
+const { index, login, g2, g, error, register } = require("../controller/home");
 
 router.route("/").get(index);
 router.route("/login").get(login);
