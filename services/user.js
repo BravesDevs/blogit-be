@@ -1,5 +1,5 @@
 const { User } = require("../db/models/User");
-const { hashData } = require("../common/helpers/helpers");
+const { hashData, comparePassword } = require("../common/helpers/helpers");
 
 const jwt = require("jsonwebtoken");
 
@@ -12,19 +12,13 @@ const loginService = async (email, password) => {
     };
   }
 
-  if (user.password !== password) {
+  if (!(await comparePassword(password, user.password))) {
     return {
       error: "Password is incorrect",
     };
   }
 
-  return {
-    ok: true,
-    token: jwt.sign({ email }, "secretKey", {
-      expiresIn: "1h",
-    }),
-    message: "User Login Successful",
-  };
+  return user;
 };
 
 const registerService = async (email, password, userType) => {

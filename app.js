@@ -3,7 +3,7 @@ const path = require("path");
 require("dotenv").config();
 const cors = require("cors");
 const { strict } = require("assert");
-
+const session = require("express-session");
 const { navigationRouter } = require("./routes/home");
 const { userRouter } = require("./routes/user");
 const { g2Router } = require("./routes/g2");
@@ -18,6 +18,9 @@ class App {
     this.app.use("/public", express.static(path.join(__dirname, "public")));
     this.app.use(express.json({ strict: false }));
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(
+      session({ secret: "secret", resave: true, saveUninitialized: true })
+    );
     this.app.set("view engine", "ejs");
     this.app.use(
       cors({

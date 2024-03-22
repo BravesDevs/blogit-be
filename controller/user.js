@@ -10,12 +10,19 @@ const loginApi = async (req, res) => {
   if (user.error) {
     return res.status(400).json({ error: user.error });
   }
-  // Set the token in the cookie and render the G2 Page
-  res.cookie("token", user.token, {
-    maxAge: 60 * 60 * 1000,
-    httpOnly: true,
+
+  req.session.isLoggedIn = true;
+  req.session.user = user;
+  req.session.userType = user.userType;
+  req.session.save();
+
+  console.log(req.session);
+
+  res.render("g2", {
+    title: "Welcome",
+    isLoggedIn: req.session.isLoggedIn || false,
+    userType: req.session.userType,
   });
-  res.render("g2", { title: "Welcome", isLoggedIn: true });
 };
 
 const registerApi = async (req, res) => {

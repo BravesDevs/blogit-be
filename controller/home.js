@@ -7,7 +7,12 @@ const index = async (req, res, next) => {
   // Get the License Registrations of G2
   try {
     let g2Registrations = await fetchG2RegistrationsService();
-    res.render("index", { title: "Dashboard", g2Registrations });
+    res.render("index", {
+      title: "Dashboard",
+      g2Registrations,
+      isLoggedIn: req.session.isLoggedIn || false,
+      userType: req.session.userType,
+    });
   } catch (err) {
     res.render("error", { title: "Error" });
   }
@@ -22,11 +27,20 @@ const register = (req, res, next) => {
 };
 
 const g2 = (req, res, next) => {
-  res.render("g2", { title: "G2" });
+  res.render("g2", {
+    title: "G2",
+    isLoggedIn: req.session.isLoggedIn || false,
+    userType: req.session.userType,
+  });
 };
 
 const g = (req, res, next) => {
-  res.render("g", { title: "G", g2Details: "" });
+  res.render("g", {
+    title: "G",
+    g2Details: "",
+    isLoggedIn: req.session.isLoggedIn || false,
+    userType: req.session.userType,
+  });
 };
 
 const error = (req, res, next) => {

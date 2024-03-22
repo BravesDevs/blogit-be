@@ -2,7 +2,7 @@
 <html lang="en">
   <%- include('layouts/head.ejs') %>
   <body>
-    <%- isLoggedIn ? include('layouts/authnavbar.ejs') :
+    <%- isLoggedIn && userType=='Driver' ? include('layouts/authnavbar.ejs') :
     include('layouts/navbar.ejs') %>
     <header class="masthead" style="background-color: gray">
       <div class="container position-relative px-4 px-lg-5">
