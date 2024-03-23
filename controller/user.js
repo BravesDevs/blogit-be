@@ -12,7 +12,7 @@ const loginApi = async (req, res) => {
   }
 
   req.session.isLoggedIn = true;
-  req.session.user = user;
+  req.session.user = user._id;
   req.session.userType = user.userType;
   req.session.save();
 

@@ -16,7 +16,7 @@
         </div>
       </div>
     </header>
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
           <form action="/g/fetch" method="POST" class="mb-4">
@@ -37,7 +37,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Card for displaying G2 license details -->
 
     <div class="container mt-5">
@@ -45,7 +45,7 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-body">
-              <% if(g2Details!=""){ %>
+              <% if(isLoggedIn==true){ %>
               <h5 class="card-title">
                 <%= g2Details.firstName + " " + g2Details.lastName %>
               </h5>

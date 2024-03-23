@@ -34,7 +34,19 @@ const g2 = (req, res, next) => {
   });
 };
 
-const g = (req, res, next) => {
+const g = async (req, res, next) => {
+  if (req.session.isLoggedIn) {
+    let data = await fetchG2RegistrationsService(req.session.user);
+    console.log(data);
+    res.render("g", {
+      title: "G",
+      g2Details: data,
+      isLoggedIn: req.session.isLoggedIn || false,
+      userType: req.session.userType,
+    });
+    return;
+  }
+
   res.render("g", {
     title: "G",
     g2Details: "",

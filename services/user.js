@@ -22,7 +22,11 @@ const loginService = async (email, password) => {
 };
 
 const registerService = async (email, password, userType) => {
-  const user = await User.findOne({ email });
+
+  
+  const user = await User.findOne({
+    email,
+  });
 
   if (user) {
     return {
