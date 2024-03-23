@@ -12,9 +12,9 @@ const fetchG2RegistrationsService = async (user_id) => {
   const g2 = await G2.findOne({ user: user_id })
     .select("firstName lastName licenseNo carDetails")
     .exec();
-  console.log(g2);
   return g2;
 };
+
 const fetchG2LicenseDetials = async (licenseNo) => {
   return await G2.findOne({ licenseNo });
 };
@@ -24,3 +24,4 @@ module.exports = {
   fetchG2RegistrationsService,
   fetchG2LicenseDetials,
 };
+

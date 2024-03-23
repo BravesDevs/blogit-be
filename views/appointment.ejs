@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('layouts/head.ejs') %>
+  <body>
+    <!-- Navigation bar inclusion removed for brevity -->
+
+    <header class="masthead" style="background-color: gray">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="page-heading">
+              <h1>Appointments</h1>
+              <span class="subheading">Generate Appointment Slots</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <!-- Form with calendar input and submit button -->
+              <form action="/g/generate" method="POST">
+                <div class="form-group">
+                  <label for="appointmentDate">Date:</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="appointmentDate"
+                    name="appointmentDate"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">
+                  Generate
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer and scripts inclusion -->
+    <%- include('layouts/footer.ejs') %> <%- include('layouts/scripts.ejs') %>
+  </body>
+</html>

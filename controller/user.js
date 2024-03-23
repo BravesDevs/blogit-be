@@ -16,8 +16,6 @@ const loginApi = async (req, res) => {
   req.session.userType = user.userType;
   req.session.save();
 
-  console.log(req.session);
-
   res.render("g2", {
     title: "Welcome",
     isLoggedIn: req.session.isLoggedIn || false,

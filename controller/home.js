@@ -59,6 +59,10 @@ const error = (req, res, next) => {
   res.render("error", { title: "Error" });
 };
 
+const appointment = (req, res, next) => {
+  res.render("appointment", { title: "Appointment" });
+};
+
 module.exports = {
   index,
   login,
@@ -66,4 +70,5 @@ module.exports = {
   g,
   error,
   register,
+  appointment,
 };
