@@ -17,6 +17,19 @@ const addAppointments = async (req, res, next) => {
   try {
     const { appointmentDate } = req.body;
 
+    // If same date appointments are already present, return
+
+    const existingAppointments = await Appointment.find({
+      date: appointmentDate,
+    });
+
+    if (existingAppointments.length > 0) {
+      res.send("Appointments already present for the given date");
+      return;
+    }
+
+    // Generate appointments for the given date
+
     const appointments = [];
     for (let i = 9; i < 14; i++) {
       appointments.push({
@@ -38,4 +51,44 @@ const addAppointments = async (req, res, next) => {
   }
 };
 
-module.exports = { getLicenseDetailsAPI, addAppointments };
+const getAppointments = async (req, res, next) => {
+  try {
+    const { appointmentDate } = req.body;
+    console.log(appointmentDate);
+    const appointments = await Appointment.find({
+      date: appointmentDate,
+    });
+
+    console.log(appointments);
+
+    res.render("g2", {
+      title: "G2",
+      appointments: appointments || [],
+      isLoggedIn: req.session.isLoggedIn || false,
+      userType: req.session.userType,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const bookAppointment = async (req, res, next) => {
+  try {
+    const { appointmentId } = req.body;
+
+    await Appointment.updateOne(
+      { _id: appointmentId },
+      { $set: { user: req.session.user, isSlotAvailable: false } }
+    );
+    res.send("Appointment booked successfully");
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = {
+  getLicenseDetailsAPI,
+  addAppointments,
+  getAppointments,
+  bookAppointment,
+};

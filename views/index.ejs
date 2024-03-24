@@ -2,8 +2,11 @@
 <html lang="en">
   <%- include('layouts/head.ejs') %>
   <body>
-    <%- isLoggedIn && userType=='Driver' ? include('layouts/authnavbar.ejs') :
-    include('layouts/navbar.ejs') %>
+    <% if (isLoggedIn) { %> <% if (userType == 'Admin') { %> <%-
+    include('layouts/adminNavbar.ejs') %> <% } else if (userType == 'Driver') {
+    %> <%- include('layouts/authnavbar.ejs') %> <% } else { %> <%-
+    include('layouts/navbar.ejs') %> <% } %> <% } else { %> <%-
+    include('layouts/navbar.ejs') %> <% } %>
     <header class="masthead" style="background-color: gray">
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">

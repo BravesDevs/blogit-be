@@ -16,8 +16,9 @@ const loginApi = async (req, res) => {
   req.session.userType = user.userType;
   req.session.save();
 
-  res.render("g2", {
+  res.render("index", {
     title: "Welcome",
+    appointments: [],
     isLoggedIn: req.session.isLoggedIn || false,
     userType: req.session.userType,
   });

@@ -29,6 +29,7 @@ const register = (req, res, next) => {
 const g2 = (req, res, next) => {
   res.render("g2", {
     title: "G2",
+    appointments: [],
     isLoggedIn: req.session.isLoggedIn || false,
     userType: req.session.userType,
   });
