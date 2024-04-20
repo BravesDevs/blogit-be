@@ -1,7 +1,7 @@
 const path = require("path");
 
 const ejs = require("ejs");
-const { fetchG2RegistrationsService, fetchTestUsersData } = require("../services/g2");
+const { fetchG2RegistrationsService, fetchTestUsersData, userTestPassService } = require("../services/g2");
 
 const index = async (req, res, next) => {
   // Get the License Registrations of G2
@@ -73,6 +73,21 @@ const tests = async (req, res, next) => {
   });
 };
 
+const testFail = async (req, res, next) => {
+  return res.status(200).json({ message: "Test Failed" });
+};
+
+const testPass = async (req, res, next) => {
+  const userId = req.params.id;
+  await userTestPassService(userId);
+  const data = await fetchTestUsersData();
+  res.render("tests", {
+    data: data || [], title: "Tests", isLoggedIn: req.session.isLoggedIn || false,
+    userType: req.session.userType,
+  });
+
+};
+
 module.exports = {
   index,
   login,
@@ -81,5 +96,7 @@ module.exports = {
   error,
   register,
   appointment,
-  tests
+  tests,
+  testFail,
+  testPass
 };

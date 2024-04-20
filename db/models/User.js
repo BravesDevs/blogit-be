@@ -6,6 +6,10 @@ const userSchema = new Schema({
   email: String,
   password: String,
   userType: String,
+  level: {
+    type: String,
+    default: "G1"
+  }
 });
 
 const User = mongoose.model("User", userSchema);

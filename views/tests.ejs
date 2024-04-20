@@ -30,44 +30,15 @@
                                             Time: <%= d.time %><br>
                                                 User: <%= d.user %>
                                     </p>
-                                    <button class="btn btn-success pass-btn" data-id="<%= d.id %>">Pass</button>
-                                    <button class="btn btn-danger fail-btn" data-id="<%= d.id %>">Fail</button>
+                                    <a href="/tests/pass/<%= d.userId %>" class="btn btn-success">Pass</a>
+                                    <a href="/tests/fail/<%= d.userId %>" class="btn btn-danger">Fail</a>
+
                                 </div>
                                 <% }); %>
                             </div>
                     </div>
                 </div>
-
-                <!-- End of card section -->
                 <%- include('layouts/footer.ejs') %> <%- include('layouts/scripts.ejs') %>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                        <script>
-                            $('.pass-btn').click(function () {
-                                const id = $(this).data('id');
-                                $.post('/tests/pass', {
-                                    id: id
-                                }, function (data) {
-                                    if (data.success) {
-                                        alert('Test passed');
-                                    } else {
-                                        alert('Test failed');
-                                    }
-                                });
-                            });
-
-                            $('.fail-btn').click(function () {
-                                const id = $(this).data('id');
-                                $.post('/tests/fail', {
-                                    id: id
-                                }, function (data) {
-                                    if (data.success) {
-                                        alert('Test failed');
-                                    } else {
-                                        alert('Test failed');
-                                    }
-                                });
-                            });
-                        </script>
     </body>
 
 </html>
