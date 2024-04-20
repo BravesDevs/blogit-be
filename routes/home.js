@@ -8,6 +8,7 @@ const {
   error,
   register,
   appointment,
+  tests
 } = require("../controller/home");
 
 router.route("/").get(index);
@@ -17,5 +18,6 @@ router.route("/g").get(g);
 router.route("/error").get(error);
 router.route("/register").get(register);
 router.route("/appointment").get(appointment);
+router.route("/tests").get(tests);
 
 module.exports.navigationRouter = router;

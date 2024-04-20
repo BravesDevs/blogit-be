@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/head.ejs') %>
+
+    <body>
+        <%- isLoggedIn && userType=='Driver' ? include('layouts/authnavbar.ejs') : include('layouts/navbar.ejs') %>
+            <header class="masthead" style="background-color: gray">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-cont   ent-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="page-heading">
+                                <h1>Driver Tests</h1>
+                                <span class="subheading">Department of Motor Vehicles</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <% data.forEach(function(d) { %>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Entry ID: <%= d.id %>
+                                    </h5>
+                                    <p class="card-text">
+                                        Date: <%= d.date %><br>
+                                            Time: <%= d.time %><br>
+                                                User: <%= d.user %>
+                                    </p>
+                                    <button class="btn btn-success pass-btn" data-id="<%= d.id %>">Pass</button>
+                                    <button class="btn btn-danger fail-btn" data-id="<%= d.id %>">Fail</button>
+                                </div>
+                                <% }); %>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- End of card section -->
+                <%- include('layouts/footer.ejs') %> <%- include('layouts/scripts.ejs') %>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                        <script>
+                            $('.pass-btn').click(function () {
+                                const id = $(this).data('id');
+                                $.post('/tests/pass', {
+                                    id: id
+                                }, function (data) {
+                                    if (data.success) {
+                                        alert('Test passed');
+                                    } else {
+                                        alert('Test failed');
+                                    }
+                                });
+                            });
+
+                            $('.fail-btn').click(function () {
+                                const id = $(this).data('id');
+                                $.post('/tests/fail', {
+                                    id: id
+                                }, function (data) {
+                                    if (data.success) {
+                                        alert('Test failed');
+                                    } else {
+                                        alert('Test failed');
+                                    }
+                                });
+                            });
+                        </script>
+    </body>
+
+</html>

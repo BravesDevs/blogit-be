@@ -1,7 +1,7 @@
 const path = require("path");
 
 const ejs = require("ejs");
-const { fetchG2RegistrationsService } = require("../services/g2");
+const { fetchG2RegistrationsService, fetchTestUsersData } = require("../services/g2");
 
 const index = async (req, res, next) => {
   // Get the License Registrations of G2
@@ -64,6 +64,15 @@ const appointment = (req, res, next) => {
   res.render("appointment", { title: "Appointment" });
 };
 
+const tests = async (req, res, next) => {
+  const data = await fetchTestUsersData();
+
+  res.render("tests", {
+    data: data || [], title: "Tests", isLoggedIn: req.session.isLoggedIn || false,
+    userType: req.session.userType,
+  });
+};
+
 module.exports = {
   index,
   login,
@@ -72,4 +81,5 @@ module.exports = {
   error,
   register,
   appointment,
+  tests
 };
